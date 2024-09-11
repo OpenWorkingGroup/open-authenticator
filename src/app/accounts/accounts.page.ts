@@ -7,6 +7,7 @@ import { informationCircleOutline } from 'ionicons/icons';
 import { IonicBundleModule } from '../shared/ionic-bundle.module';
 import { UiService } from '../shared/services/ui.service';
 
+import { AccountService } from '../shared/services/account.service';
 import { AccountCardComponent } from './account-card/account-card.component';
 
 @Component({
@@ -23,12 +24,8 @@ export class AccountsPage {
   description = 'open things with it';
   homepage = 'https://openwineproject.org';
 
-  accounts = signal([
-    {
-      issuer: 'GitHub',
-      label: 'mrjonleek@gmail.com',
-    },
-  ]);
+  //
+  accounts = inject(AccountService).accounts;
 
   constructor() {
     addIcons({ informationCircleOutline });
