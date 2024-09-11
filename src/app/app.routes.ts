@@ -8,8 +8,14 @@ export const routes: Routes = [
       import('./welcome/welcome.page').then((m) => m.WelcomePage),
   },
   {
+    path: 'accounts',
+    title: 'Accounts',
+    loadComponent: () =>
+      import('./accounts/accounts.page').then((m) => m.AccountsPage),
+  },
+  {
     path: '',
-    redirectTo: 'welcome',
+    redirectTo: 'accounts',
     pathMatch: 'full',
   },
 ];
