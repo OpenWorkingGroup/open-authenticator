@@ -16,14 +16,11 @@ export class AppComponent {
   private nav = inject(NavController);
   private accounts = inject(AccountService).accounts;
 
-  /**
-   * we
-   */
-  // private router = effect(() =>
-  //   this.accounts().length === 0
-  //     ? this.nav.navigateBack(['/start'])
-  //     : this.nav.navigateForward(['/accounts'])
-  // );
+  private router = effect(() =>
+    this.accounts().length === 0
+      ? this.nav.navigateBack(['/welcome'])
+      : this.nav.navigateForward(['/accounts'])
+  );
 
   constructor() {}
 }
