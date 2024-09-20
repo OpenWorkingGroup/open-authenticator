@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { addIcons } from 'ionicons';
@@ -10,12 +10,19 @@ import { UiService } from '../shared/services/ui.service';
 import { AccountService } from '../shared/services/account.service';
 import { AccountCardComponent } from './account-card/account-card.component';
 
+import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
+
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.page.html',
   styleUrls: ['./accounts.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicBundleModule, AccountCardComponent],
+  imports: [
+    CommonModule,
+    IonicBundleModule,
+    AccountCardComponent,
+    ToolbarComponent,
+  ],
 })
 export class AccountsPage {
   private ui = inject(UiService);
@@ -25,7 +32,10 @@ export class AccountsPage {
   homepage = 'https://openwineproject.org';
 
   //
-  accounts = inject(AccountService).accounts;
+  protected query = signal('');
+
+  //
+  protected accounts = inject(AccountService).accounts;
 
   constructor() {
     addIcons({ informationCircleOutline });

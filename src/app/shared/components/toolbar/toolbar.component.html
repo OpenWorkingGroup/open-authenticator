@@ -1,0 +1,21 @@
+<ion-footer id="footer" translucent="true">
+  <ion-toolbar>
+    <ion-searchbar
+      #query
+      maxlength="25"
+      animated="true"
+      autocomplete="off"
+      show-clear-button="always"
+      type="search"
+      inputmode="search"
+      placeholder="Search..."
+      (ionInput)="filter.emit(query.value ?? '')"
+    />
+    <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink]="['/mint']">
+        <ion-icon slot="start" name="add-outline" />
+        New account
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
