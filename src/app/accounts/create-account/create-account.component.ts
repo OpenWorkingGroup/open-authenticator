@@ -40,7 +40,13 @@ export class CreateAccountComponent {
       this.form.reset();
     }
 
-    this.form.markAllAsTouched();
+    // Simply close the form if it's not been
+    // touched for user convenience.
+    if (this.form.pristine) {
+      this.nav.back();
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   /**
