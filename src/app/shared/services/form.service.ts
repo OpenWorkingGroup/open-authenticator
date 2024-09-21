@@ -5,6 +5,9 @@ import {
   NonNullableFormBuilder,
 } from '@angular/forms';
 
+export const TOKEN_URI_REGEX =
+  /^otpauth:\/\/([ht]otp)\/(.+)\?([A-Z0-9.~_-]+=[^?&]*(?:&[A-Z0-9.~_-]+=[^?&]*)*)$/i;
+
 @Injectable({
   providedIn: 'root',
 })

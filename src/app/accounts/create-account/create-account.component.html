@@ -11,7 +11,7 @@
 </ion-header>
 <ion-content class="ion-padding">
   <!-- <app-token-uri (authKeyUri)="patchFromAuthKeyURI($event)" /> -->
-  <form [formGroup]="newAccountForm" (ngSubmit)="save()">
+  <form [formGroup]="form" (ngSubmit)="save()">
     <ion-item lines="none">
       <ion-input
         label="Secret"

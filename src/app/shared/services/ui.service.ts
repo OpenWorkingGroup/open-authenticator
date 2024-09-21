@@ -42,10 +42,10 @@ export class UiService {
    */
   async confirm(message?: any) {
     const actionSheet = await this.actionSheetCtrl.create({
-      header: message.text || 'Are you sure?',
+      header: message?.body || 'Are you sure?',
       buttons: [
-        { text: message.options.confirm || 'Confirm', role: 'confirm' },
-        { text: message.options.cancel || 'Cancel', role: 'cancel' },
+        { text: message?.options?.confirm || 'Confirm', role: 'confirm' },
+        { text: message?.options?.cancel || 'Cancel', role: 'cancel' },
       ],
     });
 

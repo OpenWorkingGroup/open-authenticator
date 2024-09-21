@@ -1,15 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormService } from 'src/app/shared/services/form.service';
 
 import { UiService } from 'src/app/shared/services/ui.service';
 import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
-
-import {
-  FormControl,
-  FormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { AccountService } from 'src/app/shared/services/account.service';
+import { TOTP } from 'otpauth';
 
 export const TOKEN_URI_REGEX =
   /^otpauth:\/\/([ht]otp)\/(.+)\?([A-Z0-9.~_-]+=[^?&]*(?:&[A-Z0-9.~_-]+=[^?&]*)*)$/i;
@@ -22,35 +19,44 @@ export const TOKEN_URI_REGEX =
   imports: [IonicBundleModule, ReactiveFormsModule],
 })
 export class CreateAccountComponent {
-  protected nav = inject(NavController);
-  protected ui = inject(UiService);
-  private fb = inject(FormBuilder);
+  private nav = inject(NavController);
+  private ui = inject(UiService);
+  private accounts = inject(AccountService).accounts;
 
-  newAccountForm = this.fb.group({
-    secret: new FormControl('', {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
-    issuer: new FormControl('', {
-      nonNullable: true,
-      validators: Validators.required,
-    }),
-    label: new FormControl('', { nonNullable: true }),
-  });
+  protected form = inject(FormService).accountForm;
 
-  save() {}
+  /**
+   * Validate form input and append account
+   * to accounts. The form is reset form on save.
+   *
+   */
+  save() {
+    if (this.form.valid) {
+      this.accounts.update((accounts) => [
+        new TOTP(this.form.value),
+        ...accounts,
+      ]);
+      this.form.markAsPristine();
+      this.form.reset();
+    }
 
+    this.form.markAllAsTouched();
+  }
+
+  /**
+   * Confirm data loss when canceling an
+   * incomplete form. The form will reset when
+   * canceled.
+   *
+   */
   async cancel() {
-    if (this.newAccountForm.dirty) {
-      const close = await this.ui.confirm({
-        message: { text: 'Are you sure? Unsasved changes will be lost.' },
-      });
-      if (close) {
-        this.newAccountForm.reset();
+    if (this.form.dirty) {
+      if (await this.ui.confirm()) {
+        this.form.reset();
         this.nav.back();
       }
     } else {
-      this.newAccountForm.reset();
+      this.form.reset();
       this.nav.back();
     }
   }
