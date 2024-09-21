@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { environment as env } from 'src/environments/environment';
 import { IonicBundleModule } from '../shared/ionic-bundle.module';
-import { addIcons } from 'ionicons';
-import { heartOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-welcome',
@@ -13,7 +12,7 @@ import { heartOutline } from 'ionicons/icons';
   imports: [IonicBundleModule, RouterLink],
 })
 export class WelcomePage {
-  constructor() {
-    addIcons({ heartOutline });
-  }
+  protected title = env.title;
+  protected description = env.description;
+  protected homepage = env.homepage;
 }
