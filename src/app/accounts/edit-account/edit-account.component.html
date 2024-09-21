@@ -10,8 +10,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <!-- <app-token-uri (authKeyUri)="patchFromAuthKeyURI($event)" /> -->
-  <form [formGroup]="editAccountForm" (ngSubmit)="save()">
+  <form [formGroup]="form" (ngSubmit)="save()">
     <ion-item lines="none">
       <ion-input
         label="Account"
@@ -24,7 +23,7 @@
       <ion-input
         label="Label"
         formControlName="label"
-        placeholder="Optionally label this account"
+        placeholder="Optional label for this account"
       />
     </ion-item>
   </form>

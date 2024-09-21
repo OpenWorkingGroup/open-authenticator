@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { accountResolver } from './account.resolver';
 
 export const routes: Routes = [
   {
@@ -8,7 +9,7 @@ export const routes: Routes = [
       import('./welcome/welcome.page').then((m) => m.WelcomePage),
   },
   {
-    path: 'accounts',
+    path: '',
     title: 'Accounts',
     loadComponent: () =>
       import('./accounts/accounts.page').then((m) => m.AccountsPage),
@@ -16,6 +17,7 @@ export const routes: Routes = [
   {
     path: 'accounts/edit/:id',
     title: 'Edit Account',
+    resolve: { account: accountResolver },
     loadComponent: () =>
       import('./accounts/edit-account/edit-account.component').then(
         (m) => m.EditAccountComponent
@@ -31,7 +33,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'accounts',
+    redirectTo: '',
     pathMatch: 'full',
   },
 ];
