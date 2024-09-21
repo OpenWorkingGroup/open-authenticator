@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar
-    ><ion-title>{{ displayName }}</ion-title>
+    ><ion-title>{{ title }}</ion-title>
     <ion-buttons slot="end">
       <ion-button color="medium" id="about-alert">
         <ion-icon
@@ -13,7 +13,7 @@
 
 <ion-alert
   trigger="about-alert"
-  header="{{ displayName }}"
+  header="Open Authenticator"
   message="{{ description }}"
   [buttons]="aboutAlertActions"
 ></ion-alert>

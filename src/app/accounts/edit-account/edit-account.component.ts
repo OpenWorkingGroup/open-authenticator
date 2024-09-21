@@ -34,7 +34,6 @@ export class EditAccountComponent implements OnInit {
     }),
     label: new FormControl('', {
       nonNullable: true,
-      validators: Validators.required,
     }),
   });
 

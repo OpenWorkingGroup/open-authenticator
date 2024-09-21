@@ -81,7 +81,6 @@ export class CreateAccountComponent {
    * @param token
    */
   patchFromAuthKeyURI(token: any) {
-    console.log(token);
     this.form.patchValue(token);
     this.form.markAsDirty();
   }

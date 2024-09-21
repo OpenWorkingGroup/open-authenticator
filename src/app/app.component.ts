@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import {
   IonApp,
   IonRouterOutlet,
@@ -13,12 +13,14 @@ import { AccountService } from './shared/services/account.service';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent {
-  private nav = inject(NavController);
+  private router = inject(NavController);
   private accounts = inject(AccountService).accounts;
 
-  private router = effect(() =>
-    this.accounts().length === 0
-      ? this.nav.navigateBack(['/welcome'])
-      : this.nav.navigateForward(['/'])
-  );
+  constructor() {
+    effect(() => {
+      this.accounts().length === 0
+        ? this.router.navigateBack(['/welcome'])
+        : this.router.navigateForward(['/']);
+    });
+  }
 }

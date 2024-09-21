@@ -1,5 +1,7 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { environment as env } from 'src/environments/environment';
 
 import { addIcons } from 'ionicons';
 import { informationCircleOutline } from 'ionicons/icons';
@@ -27,9 +29,9 @@ import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component
 export class AccountsPage {
   private ui = inject(UiService);
 
-  displayName = 'open authenticator';
-  description = 'open things with it';
-  homepage = 'https://openwineproject.org';
+  protected title = env.title;
+  protected description = env.description;
+  protected homepage = env.homepage;
 
   //
   protected query = signal('');
