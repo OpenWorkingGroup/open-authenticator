@@ -19,8 +19,6 @@ export class AppComponent {
   private router = effect(() =>
     this.accounts().length === 0
       ? this.nav.navigateBack(['/welcome'])
-      : this.nav.navigateForward(['/accounts'])
+      : this.nav.navigateForward(['/'])
   );
-
-  constructor() {}
 }
