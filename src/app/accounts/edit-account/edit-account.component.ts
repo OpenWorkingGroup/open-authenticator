@@ -60,7 +60,6 @@ export class EditAccountComponent implements OnInit {
   }
 
   save() {
-    console.log(this.form.valid);
     if (this.form.valid) {
       this.accounts.update(
         (accounts) => ((accounts[this.id] = this.account()), [...accounts])
