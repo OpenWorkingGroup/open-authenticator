@@ -50,7 +50,7 @@ export class CreateAccountComponent {
 
     // Close the form if it's not been touched.
     if (this.form.pristine) {
-      this.nav.back();
+      this.nav.navigateForward('/');
     } else {
       this.form.markAllAsTouched();
     }
