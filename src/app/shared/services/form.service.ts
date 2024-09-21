@@ -17,6 +17,14 @@ export class FormService {
   /**
    *
    */
+  private authKeyUri = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.pattern(TOKEN_URI_REGEX)],
+  });
+
+  /**
+   *
+   */
   private issuer = new FormControl('', {
     nonNullable: true,
     validators: Validators.required,
@@ -43,5 +51,12 @@ export class FormService {
     secret: this.secret,
     issuer: this.issuer,
     label: this.label,
+  });
+
+  /**
+   *
+   */
+  authKeyUriForm = this.fb.group({
+    authKeyUri: this.authKeyUri,
   });
 }

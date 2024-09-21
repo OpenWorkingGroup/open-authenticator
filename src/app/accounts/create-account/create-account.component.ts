@@ -8,6 +8,9 @@ import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { TOTP } from 'otpauth';
 
+import { TokenUriInputComponent } from 'src/app/shared/components/token-uri-input/token-uri-input.component';
+import { PasteButtonComponent } from 'src/app/shared/components/paste-button/paste-button.component';
+
 export const TOKEN_URI_REGEX =
   /^otpauth:\/\/([ht]otp)\/(.+)\?([A-Z0-9.~_-]+=[^?&]*(?:&[A-Z0-9.~_-]+=[^?&]*)*)$/i;
 
@@ -16,7 +19,12 @@ export const TOKEN_URI_REGEX =
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.scss'],
   standalone: true,
-  imports: [IonicBundleModule, ReactiveFormsModule],
+  imports: [
+    IonicBundleModule,
+    ReactiveFormsModule,
+    PasteButtonComponent,
+    TokenUriInputComponent,
+  ],
 })
 export class CreateAccountComponent {
   private nav = inject(NavController);
@@ -40,8 +48,7 @@ export class CreateAccountComponent {
       this.form.reset();
     }
 
-    // Simply close the form if it's not been
-    // touched for user convenience.
+    // Close the form if it's not been touched.
     if (this.form.pristine) {
       this.nav.back();
     } else {
@@ -65,5 +72,27 @@ export class CreateAccountComponent {
       this.form.reset();
       this.nav.back();
     }
+  }
+
+  /**
+   * Parses a Google Authenticator key string to
+   * HOTP/TOTP object and populates the form.
+   *
+   * @param token
+   */
+  patchFromAuthKeyURI(token: any) {
+    console.log(token);
+    this.form.patchValue(token);
+    this.form.markAsDirty();
+  }
+
+  /**
+   * TODO: Describe this method.
+   *
+   * @param value
+   */
+  pasteAction(value: any) {
+    this.form.patchValue({ secret: value });
+    this.form.markAsDirty();
   }
 }
