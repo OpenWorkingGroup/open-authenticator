@@ -10,13 +10,14 @@ import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
 import { UiService } from 'src/app/shared/services/ui.service';
 import { LongPressDirective } from 'src/app/shared/directives/long-press.directive';
 import { AccountService } from 'src/app/shared/services/account.service';
+import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
 
 @Component({
   selector: 'app-account-card',
   templateUrl: './account-card.component.html',
   styleUrls: ['./account-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicBundleModule, LongPressDirective],
+  imports: [CommonModule, IonicBundleModule, LongPressDirective, TimeoutPipe],
 })
 export class AccountCardComponent {
   private actionSheetCtrl = inject(ActionSheetController);
