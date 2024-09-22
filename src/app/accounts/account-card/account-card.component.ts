@@ -1,4 +1,4 @@
-import { Component, inject, model, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular/standalone';
@@ -11,13 +11,21 @@ import { UiService } from 'src/app/shared/services/ui.service';
 import { LongPressDirective } from 'src/app/shared/directives/long-press.directive';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
+import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-token.component';
+import { HOTP, TOTP } from 'otpauth';
 
 @Component({
   selector: 'app-account-card',
   templateUrl: './account-card.component.html',
   styleUrls: ['./account-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicBundleModule, LongPressDirective, TimeoutPipe],
+  imports: [
+    CommonModule,
+    CopyTokenComponent,
+    IonicBundleModule,
+    LongPressDirective,
+    TimeoutPipe,
+  ],
 })
 export class AccountCardComponent {
   private actionSheetCtrl = inject(ActionSheetController);
@@ -26,8 +34,8 @@ export class AccountCardComponent {
 
   private accounts = inject(AccountService).accounts;
 
-  account = model.required<any>();
-  id = input.required<any>();
+  account = input.required<HOTP | TOTP>();
+  id = input.required<number>();
 
   constructor() {
     addIcons({ copyOutline, clipboardOutline });
