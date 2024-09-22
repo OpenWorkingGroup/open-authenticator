@@ -34,7 +34,7 @@ export class AccountCardComponent {
 
   private accounts = inject(AccountService).accounts;
 
-  account = input.required<HOTP | TOTP>();
+  account = input.required<any>();
   id = input.required<number>();
 
   constructor() {
