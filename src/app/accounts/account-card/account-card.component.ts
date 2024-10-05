@@ -2,17 +2,13 @@ import { Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular/standalone';
-import { Clipboard } from '@capacitor/clipboard';
 
-import { addIcons } from 'ionicons';
-import { copyOutline, clipboardOutline } from 'ionicons/icons';
 import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
 import { UiService } from 'src/app/shared/services/ui.service';
 import { LongPressDirective } from 'src/app/shared/directives/long-press.directive';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
 import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-token.component';
-import { HOTP, TOTP } from 'otpauth';
 
 @Component({
   selector: 'app-account-card',
@@ -37,19 +33,6 @@ export class AccountCardComponent {
   account = input.required<any>();
   id = input.required<number>();
 
-  constructor() {
-    addIcons({ copyOutline, clipboardOutline });
-  }
-
-  async copyToClipboard($event: any, string: string) {
-    try {
-      await Clipboard.write({ string });
-      this.ui.toast('info', { message: 'Copied!', duration: 500 });
-    } catch (error) {
-      throw Error(`${error}`);
-    }
-  }
-
   /**
    * This action sheet is triggered by a long-press gesture.
    * It presents options to edit or delete the target object.
@@ -61,8 +44,6 @@ export class AccountCardComponent {
       buttons: [
         {
           ...this.ui.actions.edit,
-          // TODO: Should this be modal model that update the object w/o the
-          // need to navigate and associate an ID.
           handler: () => this.router.navigate(['accounts/edit', this.id()]),
         },
         {
@@ -78,8 +59,8 @@ export class AccountCardComponent {
   }
 
   /**
-   * This action removes the target object from the manifest. It requires the
-   * It requiresa the user confirm the intended action and presents and option
+   * This action removes the target object from the manifest. It requires
+   * the user confirm the intended action and presents and option
    * to undo the same action.
    *
    */
@@ -90,8 +71,11 @@ export class AccountCardComponent {
           accounts.filter((account) => account !== this.account())
         );
 
-        this.ui.toast('danger', {
+        this.ui.toast('trash', {
           message: `${this.account().issuer} removed!`,
+          icon: 'trash-outline',
+          swipeGesture: 'vertical',
+          keyboardClose: true,
           buttons: [
             {
               ...this.ui.actions.undo,

@@ -1,10 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgFor } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { environment as env } from 'src/environments/environment';
 
 import { addIcons } from 'ionicons';
-import { informationCircleOutline } from 'ionicons/icons';
+import { informationCircleOutline, addOutline } from 'ionicons/icons';
 
 import { IonicBundleModule } from '../shared/ionic-bundle.module';
 import { UiService } from '../shared/services/ui.service';
@@ -20,9 +21,10 @@ import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component
   styleUrls: ['./accounts.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
+    NgFor,
     IonicBundleModule,
     AccountCardComponent,
+    RouterLink,
     ToolbarComponent,
   ],
 })
@@ -40,7 +42,7 @@ export class AccountsPage {
   protected accounts = inject(AccountService).accounts;
 
   constructor() {
-    addIcons({ informationCircleOutline });
+    addIcons({ addOutline, informationCircleOutline });
   }
 
   /**

@@ -9,33 +9,35 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content color="light">
   <app-token-uri-input (authKeyUri)="patchFromAuthKeyURI($event)" />
   <form [formGroup]="form" (ngSubmit)="save()">
-    <ion-item lines="none">
-      <ion-input
-        label="Secret"
-        formControlName="secret"
-        placeholder="Example: I65VU7K5ZQL7WB4E"
-        errorText="Secret is required"
-      >
-        <app-paste-button slot="end" (clipboard)="pasteAction($event)" />
-      </ion-input>
-    </ion-item>
-    <ion-item lines="none">
-      <ion-input
-        label="Account"
-        formControlName="issuer"
-        placeholder="Choose a name for this service"
-        errorText="Account name required"
-      />
-    </ion-item>
-    <ion-item lines="none">
-      <ion-input
-        label="Label"
-        formControlName="label"
-        placeholder="Optional label for this account"
-      />
-    </ion-item>
+    <ion-list [inset]="true" lines="none">
+      <ion-item>
+        <ion-input
+          label="Secret"
+          formControlName="secret"
+          placeholder="Example: I65VU7K5ZQL7WB4E"
+          errorText="Secret is required"
+        >
+          <app-paste-button slot="end" (clipboard)="pasteAction($event)" />
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Account"
+          formControlName="issuer"
+          placeholder="Choose a name for this service"
+          errorText="Account name required"
+        />
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Label"
+          formControlName="label"
+          placeholder="Optional label for this account"
+        />
+      </ion-item>
+    </ion-list>
   </form>
 </ion-content>

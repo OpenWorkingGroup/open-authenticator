@@ -5,13 +5,16 @@ import {
   ToastOptions,
 } from '@ionic/angular/standalone';
 
+import { addIcons } from 'ionicons';
+import { trashBinOutline } from 'ionicons/icons';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UiService {
   private readonly styles = {
     danger: { color: 'danger', icon: 'alert-circle-outline' },
-    info: { icon: 'clipboard-outline' },
+    trash: { icon: 'trash-outline' },
   };
 
   readonly actions = {
@@ -27,13 +30,17 @@ export class UiService {
   private readonly options = {
     toast: {
       position: 'bottom' as 'bottom' | 'top' | 'middle',
-      positionAnchor: 'footer' as 'footer' | 'header',
+      // positionAnchor: 'footer' as 'footer' | 'header',
       duration: 2500,
     },
   };
 
   private toastCtrl = inject(ToastController);
   private actionSheetCtrl = inject(ActionSheetController);
+
+  constructor() {
+    addIcons({ trashBinOutline });
+  }
 
   /**
    *

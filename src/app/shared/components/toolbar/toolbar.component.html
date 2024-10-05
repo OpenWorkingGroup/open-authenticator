@@ -1,4 +1,4 @@
-<ion-footer id="footer" translucent="true">
+<ion-footer id="footer" translucent="false">
   <ion-toolbar>
     <ion-searchbar
       #query
@@ -10,12 +10,5 @@
       inputmode="search"
       placeholder="Search..."
       (ionInput)="filter.emit(query.value ?? '')"
-    />
-    <ion-buttons slot="end">
-      <ion-button fill="clear" [routerLink]="['/mint']">
-        <ion-icon slot="start" name="add-outline" />
-        New account
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+  /></ion-toolbar>
 </ion-footer>
