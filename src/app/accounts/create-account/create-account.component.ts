@@ -6,13 +6,10 @@ import { FormService } from 'src/app/shared/services/form.service';
 import { UiService } from 'src/app/shared/services/ui.service';
 import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
 import { AccountService } from 'src/app/shared/services/account.service';
-import { TOTP } from 'otpauth';
 
 import { TokenUriInputComponent } from 'src/app/shared/components/token-uri-input/token-uri-input.component';
 import { PasteButtonComponent } from 'src/app/shared/components/paste-button/paste-button.component';
-
-export const TOKEN_URI_REGEX =
-  /^otpauth:\/\/([ht]otp)\/(.+)\?([A-Z0-9.~_-]+=[^?&]*(?:&[A-Z0-9.~_-]+=[^?&]*)*)$/i;
+import { Token } from 'src/app/shared/token';
 
 @Component({
   selector: 'app-create-account',
@@ -30,18 +27,17 @@ export class CreateAccountComponent {
   private nav = inject(NavController);
   private ui = inject(UiService);
   private accounts = inject(AccountService).accounts;
-
   protected form = inject(FormService).accountForm;
 
   /**
    * Validate form input and append account
-   * to accounts. The form is reset form on save.
+   * to accounts. The form is reset on save.
    *
    */
   save() {
     if (this.form.valid) {
       this.accounts.update((accounts) => [
-        new TOTP(this.form.value),
+        new Token((<unknown>this.form.value) as Token),
         ...accounts,
       ]);
       this.form.markAsPristine();

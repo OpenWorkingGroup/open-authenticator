@@ -1,11 +1,4 @@
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
@@ -20,7 +13,7 @@ import {
 } from '@angular/forms';
 
 import { AccountService } from 'src/app/shared/services/account.service';
-import { HOTP, TOTP } from 'otpauth';
+import { Token } from 'src/app/shared/token';
 
 @Component({
   selector: 'app-edit-account',
@@ -35,7 +28,7 @@ export class EditAccountComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private nav = inject(NavController);
   private accounts = inject(AccountService).accounts;
-  private account = signal(<HOTP | TOTP>{});
+  private account = signal(<Token>{});
   private id!: number;
 
   protected form = this.fb.group({
@@ -48,9 +41,6 @@ export class EditAccountComponent implements OnInit {
     }),
   });
 
-  constructor() {
-    effect(() => console.log(this.account()));
-  }
   /**
    *
    */
@@ -67,7 +57,8 @@ export class EditAccountComponent implements OnInit {
     this.form.valueChanges.subscribe((account) => {
       if (this.form.valid) {
         this.account.update(
-          (account) => <HOTP | TOTP>{ ...account, ...this.form.value }
+          (account) =>
+            new Token((<unknown>{ ...account, ...this.form.value }) as Token)
         );
       }
     });

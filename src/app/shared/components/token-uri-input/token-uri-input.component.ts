@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { FormService, TOKEN_URI_REGEX } from '../../services/form.service';
+import { FormService } from '../../services/form.service';
 import { IonicBundleModule } from '../../ionic-bundle.module';
 import { PasteButtonComponent } from '../paste-button/paste-button.component';
 
