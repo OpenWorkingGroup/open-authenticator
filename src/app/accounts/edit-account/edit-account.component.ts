@@ -1,4 +1,12 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 import { UiService } from 'src/app/shared/services/ui.service';
@@ -11,7 +19,6 @@ import {
   NonNullableFormBuilder,
 } from '@angular/forms';
 
-import { ActivatedRoute } from '@angular/router';
 import { AccountService } from 'src/app/shared/services/account.service';
 import { HOTP, TOTP } from 'otpauth';
 
@@ -23,9 +30,13 @@ import { HOTP, TOTP } from 'otpauth';
   standalone: true,
 })
 export class EditAccountComponent implements OnInit {
-  protected fb = inject(NonNullableFormBuilder);
-  protected nav = inject(NavController);
-  protected ui = inject(UiService);
+  private fb = inject(NonNullableFormBuilder);
+  private ui = inject(UiService);
+  private route = inject(ActivatedRoute);
+  private nav = inject(NavController);
+  private accounts = inject(AccountService).accounts;
+  private account = signal(<HOTP | TOTP>{});
+  private id!: number;
 
   protected form = this.fb.group({
     issuer: new FormControl('', {
@@ -37,12 +48,22 @@ export class EditAccountComponent implements OnInit {
     }),
   });
 
-  private route = inject(ActivatedRoute);
-  private accounts = inject(AccountService).accounts;
-  private account = signal(<HOTP | TOTP>{});
-  private id!: number;
-
   constructor() {
+    effect(() => console.log(this.account()));
+  }
+  /**
+   *
+   */
+  ngOnInit(): void {
+    this.id = +this.route.snapshot.params['id'];
+
+    this.account.set(computed(() => this.accounts()[this.id])());
+
+    this.form.patchValue({
+      issuer: this.account().issuer,
+      label: this.account().label,
+    });
+
     this.form.valueChanges.subscribe((account) => {
       if (this.form.valid) {
         this.account.update(
@@ -52,18 +73,17 @@ export class EditAccountComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.id = +this.route.snapshot.params['id'];
-    const account = computed(() => this.accounts()[this.id]);
-    this.form.patchValue({ issuer: account().issuer, label: account().label });
-  }
-
-  save() {
+  /**
+   *
+   */
+  protected save(): void {
     if (this.form.valid) {
+      const account = computed(() => this.account());
+      console.log(account());
       this.accounts.update(
-        (accounts) => ((accounts[this.id] = this.account()), [...accounts])
+        (accounts) => ((accounts[this.id] = account()), [...accounts])
       );
-      this.form.markAsPristine();
+      this.form.reset();
       this.nav.back();
     }
   }
