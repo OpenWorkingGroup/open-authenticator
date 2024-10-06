@@ -69,10 +69,8 @@ export class EditAccountComponent implements OnInit {
    */
   protected save(): void {
     if (this.form.valid) {
-      const account = computed(() => this.account());
-      console.log(account());
       this.accounts.update(
-        (accounts) => ((accounts[this.id] = account()), [...accounts])
+        (accounts) => ((accounts[this.id] = this.account()), [...accounts])
       );
       this.form.reset();
       this.nav.back();
