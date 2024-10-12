@@ -1,14 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormService } from 'src/app/shared/services/form.service';
+
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+
+import { CreateAccountModule } from './create-account.module';
 
 import { UiService } from 'src/app/shared/services/ui.service';
-import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
 import { AccountService } from 'src/app/shared/services/account.service';
-
-import { TokenUriInputComponent } from 'src/app/shared/components/token-uri-input/token-uri-input.component';
-import { PasteButtonComponent } from 'src/app/shared/components/paste-button/paste-button.component';
 import { Token } from 'src/app/shared/token';
 
 @Component({
@@ -16,18 +14,28 @@ import { Token } from 'src/app/shared/token';
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.scss'],
   standalone: true,
-  imports: [
-    IonicBundleModule,
-    ReactiveFormsModule,
-    PasteButtonComponent,
-    TokenUriInputComponent,
-  ],
+  imports: [CreateAccountModule],
 })
 export class CreateAccountComponent {
-  private nav = inject(NavController);
-  private ui = inject(UiService);
-  private accounts = inject(AccountService).accounts;
-  protected form = inject(FormService).accountForm;
+  private fb = inject(FormBuilder);
+  private accounts = inject(AccountService);
+
+  protected form = this.fb.group({
+    secret: new FormControl('', {
+      validators: Validators.required,
+    }),
+    issuer: new FormControl('', {
+      validators: Validators.required,
+    }),
+    label: new FormControl('', { nonNullable: true }),
+  });
+
+  /**
+   *
+   * @param nav
+   * @param ui
+   */
+  constructor(private nav: NavController, private ui: UiService) {}
 
   /**
    * Validate form input and append account
@@ -36,11 +44,8 @@ export class CreateAccountComponent {
    */
   save() {
     if (this.form.valid) {
-      this.accounts.update((accounts) => [
-        new Token((<unknown>this.form.value) as Token),
-        ...accounts,
-      ]);
-      this.form.markAsPristine();
+      this.accounts.create((<unknown>this.form.value) as Token);
+      this.form.markAsPristine(); // TODO: Is this needed? What is it doing?
       this.form.reset();
     }
 

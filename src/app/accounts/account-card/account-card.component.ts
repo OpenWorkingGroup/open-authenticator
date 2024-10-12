@@ -1,9 +1,8 @@
 import { Component, inject, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular/standalone';
 
-import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
+import { AccountCardModule } from './account-card.module';
 import { UiService } from 'src/app/shared/services/ui.service';
 import { LongPressDirective } from 'src/app/shared/directives/long-press.directive';
 import { AccountService } from 'src/app/shared/services/account.service';
@@ -16,9 +15,8 @@ import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-to
   styleUrls: ['./account-card.component.scss'],
   standalone: true,
   imports: [
-    CommonModule,
+    AccountCardModule,
     CopyTokenComponent,
-    IonicBundleModule,
     LongPressDirective,
     TimeoutPipe,
   ],

@@ -17,7 +17,6 @@ export class TimeoutPipe implements PipeTransform {
   transform(period: number) {
     return timer(0, 1000).pipe(
       map(() => Math.floor(period - ((Date.now() / 1000) % period))),
-      // map(() => period - Math.floor((Date.now() / 1000) % period)),
       map((timeout) => timeout / period)
     );
   }

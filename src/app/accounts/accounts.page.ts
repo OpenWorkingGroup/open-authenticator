@@ -1,32 +1,20 @@
 import { Component, inject, signal } from '@angular/core';
-import { NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 import { environment as env } from 'src/environments/environment';
 
 import { addIcons } from 'ionicons';
-import { informationCircleOutline, addOutline } from 'ionicons/icons';
-
-import { IonicBundleModule } from '../shared/ionic-bundle.module';
+import { addCircleOutline } from 'ionicons/icons';
 import { UiService } from '../shared/services/ui.service';
 
+import { AccountsModule } from './accounts.module';
 import { AccountService } from '../shared/services/account.service';
-import { AccountCardComponent } from './account-card/account-card.component';
-
-import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.page.html',
   styleUrls: ['./accounts.page.scss'],
   standalone: true,
-  imports: [
-    NgFor,
-    IonicBundleModule,
-    AccountCardComponent,
-    RouterLink,
-    ToolbarComponent,
-  ],
+  imports: [AccountsModule],
 })
 export class AccountsPage {
   private ui = inject(UiService);
@@ -36,13 +24,13 @@ export class AccountsPage {
   protected homepage = env.homepage;
 
   //
-  protected query = signal('');
+  protected filter = signal('');
 
   //
   protected accounts = inject(AccountService).accounts;
 
   constructor() {
-    addIcons({ addOutline, informationCircleOutline });
+    addIcons({ addCircleOutline });
   }
 
   /**

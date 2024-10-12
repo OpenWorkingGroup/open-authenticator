@@ -1,14 +1,17 @@
 import { Component, output } from '@angular/core';
 import { Clipboard } from '@capacitor/clipboard';
-import { IonicBundleModule } from '../../ionic-bundle.module';
+
 import { addIcons } from 'ionicons';
 import { clipboardOutline } from 'ionicons/icons';
+
+import { PasteButtonModule } from './paste-button.module';
+
 @Component({
   selector: 'app-paste-button',
   templateUrl: './paste-button.component.html',
   styleUrls: ['./paste-button.component.scss'],
   standalone: true,
-  imports: [IonicBundleModule],
+  imports: [PasteButtonModule],
 })
 export class PasteButtonComponent {
   clipboard = output<string>();

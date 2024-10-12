@@ -3,9 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 import { UiService } from 'src/app/shared/services/ui.service';
-import { IonicBundleModule } from 'src/app/shared/ionic-bundle.module';
+import { EditAccountModule } from './edit-account.module';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import {
   FormControl,
   Validators,
@@ -19,7 +18,7 @@ import { Token } from 'src/app/shared/token';
   selector: 'app-edit-account',
   templateUrl: './edit-account.component.html',
   styleUrls: ['./edit-account.component.scss'],
-  imports: [IonicBundleModule, ReactiveFormsModule],
+  imports: [EditAccountModule],
   standalone: true,
 })
 export class EditAccountComponent implements OnInit {
@@ -33,7 +32,6 @@ export class EditAccountComponent implements OnInit {
 
   protected form = this.fb.group({
     issuer: new FormControl('', {
-      nonNullable: true,
       validators: Validators.required,
     }),
     label: new FormControl('', {

@@ -18,4 +18,11 @@ export class AccountService {
 
     this.accounts.set([seed]);
   }
+
+  public create(account: Token): void {
+    return this.accounts.update((accounts) => [
+      new Token(account),
+      ...accounts,
+    ]);
+  }
 }
