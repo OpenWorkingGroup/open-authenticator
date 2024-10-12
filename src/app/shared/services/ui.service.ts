@@ -13,7 +13,7 @@ import { trashOutline, fingerPrintOutline } from 'ionicons/icons';
 })
 export class UiService {
   private readonly styles = {
-    trash: { icon: 'trash-outline' },
+    danger: { color: 'danger' },
     info: {},
   };
 
@@ -30,7 +30,7 @@ export class UiService {
   private readonly options = {
     toast: <ToastOptions>{
       position: 'bottom' as 'bottom' | 'top' | 'middle',
-      // positionAnchor: 'footer' as 'footer' | 'header',
+      positionAnchor: 'footer' as 'footer' | 'header',
       duration: 2500,
       swipeGesture: 'vertical',
     },

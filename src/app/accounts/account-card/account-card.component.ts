@@ -80,18 +80,17 @@ export class AccountCardComponent {
           accounts.filter((account) => account !== this.account())
         );
 
-        this.ui.toast('trash', {
+        this.ui.toast('danger', {
           message: `${this.account().issuer} removed!`,
           icon: 'trash-outline',
-          swipeGesture: 'vertical',
           keyboardClose: true,
           buttons: [
             {
               ...this.ui.actions.undo,
               handler: () =>
                 this.accounts.update((accounts) => [
-                  ...accounts,
                   this.account(),
+                  ...accounts,
                 ]),
             },
           ],
