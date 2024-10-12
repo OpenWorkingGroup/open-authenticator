@@ -1,10 +1,17 @@
-import { Component, inject, signal } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  inject,
+  signal,
+  ViewChild,
+} from '@angular/core';
 
 import { environment as env } from 'src/environments/environment';
 
 import { addIcons } from 'ionicons';
 import { addCircleOutline } from 'ionicons/icons';
 import { UiService } from '../shared/services/ui.service';
+import { IonSearchbar } from '@ionic/angular/standalone';
 
 import { AccountsModule } from './accounts.module';
 import { AccountService } from '../shared/services/account.service';
@@ -19,6 +26,8 @@ import { FilterPipe } from '../shared/pipes/filter.pipe';
   imports: [AccountsModule, FilterPipe],
 })
 export class AccountsPage {
+  @ViewChild('query') searchbar!: IonSearchbar;
+
   private ui = inject(UiService);
 
   protected title = env.title;
@@ -30,6 +39,11 @@ export class AccountsPage {
 
   //
   protected accounts = inject(AccountService).accounts;
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    this.searchbar.setFocus();
+  }
 
   constructor() {
     addIcons({ addCircleOutline });
