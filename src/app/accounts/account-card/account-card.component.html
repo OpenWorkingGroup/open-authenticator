@@ -1,4 +1,9 @@
-<ion-card button appLongPress (appLongPressDo)="presentActionSheet()">
+<ion-card
+  button
+  appLongPress
+  (appLongPressDo)="presentActionSheet()"
+  (click)="clickAction()"
+>
   <ion-row class="ion-align-items-center">
     <ion-col>
       <ion-card-header>

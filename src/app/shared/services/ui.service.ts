@@ -6,15 +6,15 @@ import {
 } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
-import { trashBinOutline } from 'ionicons/icons';
+import { trashOutline, fingerPrintOutline } from 'ionicons/icons';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UiService {
   private readonly styles = {
-    danger: { color: 'danger', icon: 'alert-circle-outline' },
     trash: { icon: 'trash-outline' },
+    info: {},
   };
 
   readonly actions = {
@@ -28,10 +28,11 @@ export class UiService {
 
   // Default toast styles
   private readonly options = {
-    toast: {
+    toast: <ToastOptions>{
       position: 'bottom' as 'bottom' | 'top' | 'middle',
       // positionAnchor: 'footer' as 'footer' | 'header',
       duration: 2500,
+      swipeGesture: 'vertical',
     },
   };
 
@@ -39,7 +40,7 @@ export class UiService {
   private actionSheetCtrl = inject(ActionSheetController);
 
   constructor() {
-    addIcons({ trashBinOutline });
+    addIcons({ trashOutline, fingerPrintOutline });
   }
 
   /**
@@ -69,7 +70,7 @@ export class UiService {
    * @param options Additional options to customize the toast.
    */
   async toast(
-    style: 'danger' | keyof typeof this.styles,
+    style: 'info' | keyof typeof this.styles,
     options: ToastOptions = {}
   ) {
     const toast = await this.toastCtrl.create({

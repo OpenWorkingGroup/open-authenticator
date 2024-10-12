@@ -32,6 +32,17 @@ export class AccountCardComponent {
   id = input.required<number>();
 
   /**
+   *
+   */
+  protected clickAction() {
+    this.ui.toast('info', {
+      icon: 'finger-print-outline',
+      message: 'Long press for action sheet.',
+      duration: 250,
+    });
+  }
+
+  /**
    * This action sheet is triggered by a long-press gesture.
    * It presents options to edit or delete the target object.
    *
