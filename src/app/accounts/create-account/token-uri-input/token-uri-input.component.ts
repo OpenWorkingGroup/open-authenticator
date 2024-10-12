@@ -1,12 +1,6 @@
 import { Component, inject, OnDestroy, output } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
-import { FormService } from '../../../shared/services/form.service';
 import { TokenUriInputModule } from './token-uri-input.module';
 import { PasteButtonComponent } from '../../../shared/components/paste-button/paste-button.component';
 
@@ -19,7 +13,7 @@ export const TOKEN_URI_REGEX =
   templateUrl: './token-uri-input.component.html',
   styleUrls: ['./token-uri-input.component.scss'],
   standalone: true,
-  imports: [TokenUriInputModule, ReactiveFormsModule, PasteButtonComponent],
+  imports: [TokenUriInputModule, PasteButtonComponent],
 })
 export class TokenUriInputComponent implements OnDestroy {
   private fb = inject(FormBuilder);

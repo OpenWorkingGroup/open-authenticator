@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   IonList,
@@ -14,6 +15,7 @@ import {
   declarations: [],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     IonList,
     IonInput,
     IonItem,
@@ -23,6 +25,7 @@ import {
   ],
   exports: [
     CommonModule,
+    ReactiveFormsModule,
     IonList,
     IonInput,
     IonItem,
