@@ -16,7 +16,7 @@
 
 <ion-content color="light">
   <app-account-card
-    *ngFor="let account of accounts(); index as i"
+    *ngFor="let account of accounts() | filter: filter(): 'issuer': 'label'; index as i"
     [account]="account"
     [id]="i"
   ></app-account-card>
@@ -33,6 +33,6 @@
       type="search"
       inputmode="search"
       placeholder="Search..."
-      (ionInput)="filter.set('#query')"
+      (ionInput)="filter.set(query.value ?? '')"
   /></ion-toolbar>
 </ion-footer>

@@ -9,12 +9,14 @@ import { UiService } from '../shared/services/ui.service';
 import { AccountsModule } from './accounts.module';
 import { AccountService } from '../shared/services/account.service';
 
+import { FilterPipe } from '../shared/pipes/filter.pipe';
+
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.page.html',
   styleUrls: ['./accounts.page.scss'],
   standalone: true,
-  imports: [AccountsModule],
+  imports: [AccountsModule, FilterPipe],
 })
 export class AccountsPage {
   private ui = inject(UiService);
