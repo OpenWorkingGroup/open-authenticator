@@ -25,10 +25,10 @@ Open Authenticator uses [`@capictor/preferences`](https://capacitorjs.com/docs/a
 
 #### Kit
 
-- [] [Angular 18](https://angular.dev) - TypeScript MVC framework
-- [] [Ionic 8](https://github.com/ionic-team/ionic-framework/releases/v8.0.0) - Mobile component & design system
-- [] [Capacitor 6](https://capacitorjs.com/docs) - Device API
-- [] [Karma 6](https://angular.dev/guide/testing) - Testing framework
+- [ ] [Angular 18](https://angular.dev) - TypeScript MVC framework
+- [ ] [Ionic 8](https://github.com/ionic-team/ionic-framework/releases/v8.0.0) - Mobile component & design system
+- [ ] [Capacitor 6](https://capacitorjs.com/docs) - Device API
+- [ ] [Karma 6](https://angular.dev/guide/testing) - Testing framework
 
 **Packages**
 
