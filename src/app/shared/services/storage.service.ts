@@ -17,8 +17,7 @@ export class StorageService {
       const { value } = await Preferences.get({ ...this.database });
       return JSON.parse(value || '[]');
     } catch (error) {
-      // TODO: Implement true error handling.
-      console.error('Error retrieving accounts:', error);
+      throw new Error(`Error retrieving accounts: ${error}`);
     }
   }
 
@@ -33,8 +32,7 @@ export class StorageService {
         value: JSON.stringify(payload),
       });
     } catch (error) {
-      // TODO: Implement true error handling.
-      return console.error('Error retrieving accounts:', error);
+      throw new Error(`Error saving accounts: ${error}`);
     }
   }
 }

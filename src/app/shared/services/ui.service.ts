@@ -14,6 +14,7 @@ import { trashOutline, fingerPrintOutline } from 'ionicons/icons';
 export class UiService {
   private readonly styles = {
     danger: { color: 'danger' },
+    warning: { color: 'warning' },
     info: {},
   };
 

@@ -1,9 +1,10 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import {
   IonApp,
   IonRouterOutlet,
   NavController,
 } from '@ionic/angular/standalone';
+
 import { AccountService } from './shared/services/account.service';
 
 @Component({
