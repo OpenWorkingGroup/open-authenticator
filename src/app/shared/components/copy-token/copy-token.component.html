@@ -1,0 +1,20 @@
+<ion-button
+  shape="round"
+  color="secondary"
+  (click)="copyToClipboard($event, value())"
+  *ngIf="!clicked()"
+>
+  <ion-icon name="copy-outline" slot="start"></ion-icon>
+  {{ value() | token }}
+</ion-button>
+
+<ion-button
+  shape="round"
+  fill="outline"
+  color="secondary"
+  [disabled]="true"
+  *ngIf="clicked()"
+>
+  <ion-icon name="clipboard-outline" slot="start"></ion-icon>
+  Copied!
+</ion-button>

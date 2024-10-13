@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="cancel()">
+      <ion-button>Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Edit Account</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()" [strong]="true">Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <ion-list [inset]="true">
+      <ion-item lines="none">
+        <ion-input
+          label="Account"
+          formControlName="issuer"
+          placeholder="Choose a name for this service"
+          errorText="Account name required"
+        />
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input
+          label="Label"
+          formControlName="label"
+          placeholder="Optional label for this account"
+        />
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

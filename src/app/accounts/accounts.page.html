@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title id="about-alert">{{ title }}</ion-title>
+    <ion-button fill="clear" slot="end" [routerLink]="['/mint']" shape="round">
+      <ion-icon slot="icon-only" name="add-circle-outline" />
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-alert
+  trigger="about-alert"
+  header="Open Authenticator"
+  message="{{ description }}"
+  [buttons]="aboutAlertActions"
+></ion-alert>
+
+<ion-content color="light">
+  <app-account-card
+    *ngFor="let account of accounts() | filter: filter(): 'issuer': 'label'; index as i"
+    [account]="account"
+    [id]="i"
+  ></app-account-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-searchbar
+      #query
+      maxlength="25"
+      animated="true"
+      autocomplete="off"
+      show-clear-button="always"
+      type="search"
+      inputmode="search"
+      placeholder="Search..."
+      (ionInput)="filter.set(query.value ?? '')"
+  /></ion-toolbar>
+</ion-footer>
