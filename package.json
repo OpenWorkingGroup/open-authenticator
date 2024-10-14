@@ -10,7 +10,8 @@
     "build": "nx build --localize",
     "watch": "nx build --localize --watch --configuration development",
     "test": "nx test",
-    "lint": "nx lint"
+    "lint": "nx lint",
+    "docs": "npx compodoc -p tsconfig.doc.json --output docs"
   },
   "private": true,
   "keywords": [
@@ -59,6 +60,7 @@
     "@angular/language-service": "^18.0.0",
     "@angular/localize": "^18.2.8",
     "@capacitor/cli": "6.1.2",
+    "@compodoc/compodoc": "^1.1.26",
     "@ionic/angular-toolkit": "^11.0.1",
     "@nx/angular": "20.0.0",
     "@nx/js": "20.0.0",

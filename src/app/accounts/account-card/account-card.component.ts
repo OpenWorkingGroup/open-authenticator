@@ -10,7 +10,8 @@ import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
 import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-token.component';
 
 /**
- * Testing
+ * Primary component for interacting with the `account` object.
+ *
  */
 @Component({
   selector: 'app-account-card',
@@ -24,9 +25,6 @@ import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-to
     TimeoutPipe,
   ],
 })
-/**
- * Testing
- */
 export class AccountCardComponent {
   private actionSheetCtrl = inject(ActionSheetController);
   private router = inject(Router);
@@ -34,6 +32,7 @@ export class AccountCardComponent {
 
   private accounts = inject(AccountService).accounts;
 
+  // Describe this object
   account = input.required<any>();
   id = input.required<number>();
 
