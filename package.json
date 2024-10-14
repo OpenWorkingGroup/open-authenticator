@@ -1,8 +1,9 @@
 {
   "name": "open-authenticator",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Open Working Group",
+  "description": "The no-frills purpose built multi-platform multi-factor authentication application.",
+  "homepage": "https://openworkinggroup.org/x/open-authenticator",
   "scripts": {
     "ng": "ng",
     "start": "nx serve",
@@ -12,6 +13,13 @@
     "lint": "nx lint"
   },
   "private": true,
+  "keywords": [
+    "totp",
+    "hotp",
+    "mfa",
+    "2fa",
+    "2factor"
+  ],
   "dependencies": {
     "@angular/animations": "^18.0.0",
     "@angular/common": "^18.0.0",
@@ -51,6 +59,8 @@
     "@capacitor/cli": "6.1.2",
     "@ionic/angular-toolkit": "^11.0.1",
     "@nx/angular": "20.0.0",
+    "@nx/storybook": "^20.0.0",
+    "@nx/web": "20.0.0",
     "@nx/workspace": "20.0.0",
     "@schematics/angular": "^18.0.0",
     "@types/jasmine": "~5.1.0",
@@ -68,7 +78,8 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "nx": "20.0.0",
+    "storybook": "^8.2.8",
     "typescript": "~5.4.0"
   },
-  "description": "An Ionic project"
+  "nx": {}
 }
