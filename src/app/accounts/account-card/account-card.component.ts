@@ -9,6 +9,9 @@ import { AccountService } from 'src/app/shared/services/account.service';
 import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
 import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-token.component';
 
+/**
+ * Testing
+ */
 @Component({
   selector: 'app-account-card',
   templateUrl: './account-card.component.html',
@@ -21,6 +24,9 @@ import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-to
     TimeoutPipe,
   ],
 })
+/**
+ * Testing
+ */
 export class AccountCardComponent {
   private actionSheetCtrl = inject(ActionSheetController);
   private router = inject(Router);
