@@ -9,6 +9,10 @@ import { AccountService } from 'src/app/shared/services/account.service';
 import { TimeoutPipe } from 'src/app/shared/pipes/timeout.pipe';
 import { CopyTokenComponent } from 'src/app/shared/components/copy-token/copy-token.component';
 
+/**
+ * Primary component for interacting with the `account` object.
+ *
+ */
 @Component({
   selector: 'app-account-card',
   templateUrl: './account-card.component.html',
@@ -28,6 +32,7 @@ export class AccountCardComponent {
 
   private accounts = inject(AccountService).accounts;
 
+  // Describe this object
   account = input.required<any>();
   id = input.required<number>();
 
