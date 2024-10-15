@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green) ![Static Badge](https://img.shields.io/badge/mono--repo-grey)
+=======
+![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green) ![Static Badge](https://img.shields.io/badge/angular-18-white) ![Static Badge](https://img.shields.io/badge/ionic-7-white) ![Static Badge](https://img.shields.io/badge/nx-monorepo-teal)
+>>>>>>> develop
 
 # Open Authenticator
 

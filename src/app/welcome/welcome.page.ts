@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { WelcomeModule } from './welcome.module';
 import { environment as env } from 'src/environments/environment';
@@ -11,7 +11,7 @@ import { environment as env } from 'src/environments/environment';
   imports: [WelcomeModule],
 })
 export class WelcomePage {
-  protected title = env.title;
-  protected description = env.description;
-  protected homepage = env.homepage;
+  @Input() protected title = env.title;
+  @Input() protected description = env.description;
+  @Input() protected homepage = env.homepage;
 }
