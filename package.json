@@ -11,7 +11,8 @@
     "watch": "nx build --localize --watch --configuration development",
     "test": "nx test",
     "lint": "nx lint",
-    "docs": "npx compodoc -p tsconfig.doc.json --output docs"
+    "docs:buid": "compodoc -p tsconfig.json --output docs --theme laravel",
+    "docs:serve": "compodoc -s -p tsconfig.json --output docs --theme laravel"
   },
   "private": true,
   "keywords": [
