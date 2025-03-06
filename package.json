@@ -2,10 +2,12 @@
   "name": "open-authenticator",
   "version": "0.0.1",
   "author": "Open Working Group",
-  "description": "The no-frills purpose built multi-platform multi-factor authentication application.",
+  "description": "A no-frills purpose built multi-platform multi-factor authentication application.",
   "homepage": "https://openworkinggroup.org/x/open-authenticator",
   "scripts": {
-    "ng": "ng",
+    // Workspace
+    // App
+    
     "start": "nx serve",
     "build": "nx build --localize",
     "watch": "nx build --localize --watch --configuration development",

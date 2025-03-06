@@ -21,7 +21,7 @@ Open Authenticator is an open source community project and the upstream reposito
 
 ### Development Notes
 
-Open Authenticator uses [`@capictor/preferences`](https://capacitorjs.com/docs/apis/preferences?_gl=1*fqyk7c*_gcl_au*MTMzMTQ4NDQwMC4xNzI1NjgwMzAx*_ga*NTMxMTcxMDk3LjE3MjU2ODAzMDE.*_ga_REH9TJF6KF*MTcyODg0NzMxNy4yMi4xLjE3Mjg4NDc5NDEuMC4wLjA.) to store user accounts. Accounts are searialized and desearialized from local storage as they are added or modified using [URI](https://hectorm.github.io/otpauth/classes/URI.html) class methods in the [OTPAuth](https://github.com/hectorm/otpauth) package to instantiate HOTP and TOTP objects.
+Oen Authenticator uses [`@capictor/preferences`](https://capacitorjs.com/docs/apis/preferences?_gl=1*fqyk7c*_gcl_au*MTMzMTQ4NDQwMC4xNzI1NjgwMzAx*_ga*NTMxMTcxMDk3LjE3MjU2ODAzMDE.*_ga_REH9TJF6KF*MTcyODg0NzMxNy4yMi4xLjE3Mjg4NDc5NDEuMC4wLjA.) to store user accounts. Accounts are searialized and desearialized from local storage as they are added or modified using [URI](https://hectorm.github.io/otpauth/classes/URI.html) class methods in the [OTPAuth](https://github.com/hectorm/otpauth) package to instantiate HOTP and TOTP objects.
 
 #### Kit
 
