@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green) ![Static Badge](https://img.shields.io/badge/angular-18-white) ![Static Badge](https://img.shields.io/badge/ionic-7-white) ![Static Badge](https://img.shields.io/badge/nx-monorepo-teal)
-=======
 ![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green) ![Static Badge](https://img.shields.io/badge/mono--repo-grey)
->>>>>>> 9253766dcac5dc05f345d920ec5ae45da6f67c53
 
 # Open Authenticator
 
