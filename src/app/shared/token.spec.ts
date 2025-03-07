@@ -1,7 +1,9 @@
+import { TOTP } from 'otpauth';
 import { Token } from './token';
 
 describe('Token', () => {
   it('should create an instance', () => {
-    expect(new Token()).toBeTruthy();
+    const token = new TOTP();
+    expect(new Token(token)).toBeTruthy();
   });
 });

@@ -6,10 +6,11 @@ import { UiService } from 'src/app/shared/services/ui.service';
 import { EditAccountModule } from './edit-account.module';
 
 import {
-  FormControl,
   Validators,
   NonNullableFormBuilder,
-} from '@angular/forms';
+  FormGroup,
+  FormBuilder
+} from '@angular/forms'; // Add FormBuilder import
 
 import { AccountService } from 'src/app/shared/services/account.service';
 import { Token } from 'src/app/shared/token';
@@ -19,37 +20,38 @@ import { Token } from 'src/app/shared/token';
   templateUrl: './edit-account.component.html',
   styleUrls: ['./edit-account.component.scss'],
   imports: [EditAccountModule],
-  standalone: true,
+  standalone: true
 })
 export class EditAccountComponent implements OnInit {
-  private fb = inject(NonNullableFormBuilder);
   private ui = inject(UiService);
   private route = inject(ActivatedRoute);
   private nav = inject(NavController);
-  private accounts = inject(AccountService).accounts;
-  private account = signal(<Token>{});
-  private id!: number;
+  accounts = inject(AccountService).accounts;
+  account = signal(<Token>{});
+  id!: number;
+  form: FormGroup;
 
-  protected form = this.fb.group({
-    issuer: new FormControl('', {
-      validators: Validators.required,
-    }),
-    label: new FormControl('', {
-      nonNullable: true,
-    }),
-  });
+  constructor(private fb: FormBuilder) {
+    // Inject FormBuilder
+    this.form = this.fb.group({
+      issuer: this.fb.control('', {
+        validators: Validators.required
+      }),
+      label: this.fb.control('')
+    });
+  }
 
   /**
    *
    */
   ngOnInit(): void {
-    this.id = +this.route.snapshot.params['id'];
+    this.id = +this.route.snapshot.params?.['id'] || 0;
 
     this.account.set(computed(() => this.accounts()[this.id])());
 
     this.form.patchValue({
       issuer: this.account().issuer,
-      label: this.account().label,
+      label: this.account().label
     });
 
     this.form.valueChanges.subscribe((account) => {
@@ -65,7 +67,7 @@ export class EditAccountComponent implements OnInit {
   /**
    *
    */
-  protected save(): void {
+  save(): void {
     if (this.form.valid) {
       this.accounts.update(
         (accounts) => ((accounts[this.id] = this.account()), [...accounts])

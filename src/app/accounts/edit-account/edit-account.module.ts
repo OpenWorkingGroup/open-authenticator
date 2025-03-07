@@ -1,43 +1,43 @@
 import { NgModule } from '@angular/core';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   IonHeader,
-  IonInput,
   IonToolbar,
+  IonButtons,
   IonButton,
   IonTitle,
-  IonButtons,
   IonContent,
-  IonList,
   IonItem,
+  IonList,
+  IonInput
 } from '@ionic/angular/standalone';
 
 @NgModule({
-  declarations: [],
   imports: [
+    ReactiveFormsModule,
     IonHeader,
-    IonInput,
     IonToolbar,
+    IonButtons,
     IonButton,
     IonTitle,
-    IonButtons,
     IonContent,
-    IonList,
     IonItem,
-    ReactiveFormsModule,
+    IonList,
+    IonInput
   ],
   exports: [
-    IonHeader,
+    ReactiveFormsModule,
     IonInput,
-    IonToolbar,
-    IonButton,
-    IonTitle,
-    IonButtons,
-    IonContent,
     IonList,
     IonItem,
-    ReactiveFormsModule,
-  ],
+    IonContent,
+    IonTitle,
+    IonButton,
+    IonButtons,
+    IonToolbar,
+    IonHeader
+  ]
 })
 export class EditAccountModule {}

@@ -1,11 +1,15 @@
 import { TestBed } from '@angular/core/testing';
-import { ResolveFn } from '@angular/router';
+import { RedirectCommand, ResolveFn } from '@angular/router';
 
 import { accountResolver } from './account.resolver';
 
 describe('accountResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => accountResolver(...resolverParameters));
+  const executeResolver: ResolveFn<boolean | RedirectCommand> = (
+    ...resolverParameters
+  ) =>
+    TestBed.runInInjectionContext(
+      () => accountResolver(...resolverParameters) as boolean | RedirectCommand
+    );
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
