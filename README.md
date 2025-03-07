@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green) ![Static Badge](https://img.shields.io/badge/mono--repo-grey)
+![Static Badge](https://img.shields.io/badge/version-alpha-blue) ![Static Badge](https://img.shields.io/badge/build-passing-green)
 
 # Open Authenticator
 

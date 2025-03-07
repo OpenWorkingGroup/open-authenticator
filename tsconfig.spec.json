@@ -2,9 +2,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "types": ["jasmine", "node", "@angular/localize"]
+    "outDir": "./out-tsc/spec",
+    "types": [
+      "jasmine",
+      "@angular/localize"
+    ]
   },
-  "files": ["src/test.ts"],
+  "files": ["src/test.ts", "src/polyfills.ts"],
   "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }

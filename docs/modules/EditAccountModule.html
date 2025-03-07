@@ -10,7 +10,7 @@
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 	   <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/dark.css">
-        <link rel="stylesheet" href="../styles/laravel.css">
+        <link rel="stylesheet" href="../styles/default.css">
     </head>
     <body>
           <script>
@@ -470,46 +470,46 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+
 import { ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 
 import {
   IonHeader,
-  IonInput,
   IonToolbar,
+  IonButtons,
   IonButton,
   IonTitle,
-  IonButtons,
   IonContent,
-  IonList,
   IonItem,
+  IonList,
+  IonInput
 } from &#x27;@ionic/angular/standalone&#x27;;
 
 @NgModule({
-  declarations: [],
   imports: [
+    ReactiveFormsModule,
     IonHeader,
-    IonInput,
     IonToolbar,
+    IonButtons,
     IonButton,
     IonTitle,
-    IonButtons,
     IonContent,
-    IonList,
     IonItem,
-    ReactiveFormsModule,
+    IonList,
+    IonInput
   ],
   exports: [
-    IonHeader,
+    ReactiveFormsModule,
     IonInput,
-    IonToolbar,
-    IonButton,
-    IonTitle,
-    IonButtons,
-    IonContent,
     IonList,
     IonItem,
-    ReactiveFormsModule,
-  ],
+    IonContent,
+    IonTitle,
+    IonButton,
+    IonButtons,
+    IonToolbar,
+    IonHeader
+  ]
 })
 export class EditAccountModule {}
 </code></pre>
