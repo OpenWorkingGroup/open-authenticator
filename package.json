@@ -78,9 +78,5 @@
     "ts-node": "10.9.1",
     "zone.js": "~0.15.0",
     "@compodoc/compodoc": "^1.1.26"
-  },
-  "engines": {
-    "node": ">=20.10.0",
-    "pnpm": ">=9.0.0"
   }
 }
