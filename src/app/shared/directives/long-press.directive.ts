@@ -3,23 +3,36 @@ import {
   HostListener,
   EventEmitter,
   Output,
-  Input,
+  Input
 } from '@angular/core';
 import { interval, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
 
 /**
- * HOW TO USE:
- * <div appLongPress [holdTime]="500" (appLongPressDo)="holdHandler(anything)"></div>
+ * The LongPressDirective is a directive that emits an event when the user
+ * holds down on an element for a certain amount of time.
  *
- * @param longPressTime (Optional). Will `emit()` every 100ms by default.
+ * `@param longPressTime` (Optional). The time in milliseconds that the user must hold down on the element before triggering the event.
+ * Default is 100ms.
+ *
+ * `@param appLongPressDo` (Required). The event that will be emitted when the
+ * user holds down on the element.
+ *
+ * ```javascript
+ * <div appLongPress [holdTime]="500" (appLongPressDo)="holdHandler(anything)"></div>
+ * ```
  */
 @Directive({
   selector: '[appLongPress]',
-  standalone: true,
+  standalone: true
 })
 export class LongPressDirective {
   @Input() longPressTimeout = 500;
+
+  /**
+   * The event that will be emitted when the user holds down on the element.
+   * @type {EventEmitter<number>}
+   */
   @Output() appLongPressDo: EventEmitter<number> = new EventEmitter();
 
   private readonly handle = new Subject();
