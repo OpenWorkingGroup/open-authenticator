@@ -83,52 +83,23 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<p><img src="https://img.shields.io/badge/version-alpha-blue" alt="Static Badge" class="img-responsive"> <img src="https://img.shields.io/badge/build-passing-green" alt="Static Badge" class="img-responsive"></p>
-<h1>Open Authenticator</h1>
-<p>Open Authenticator is an open source no-frills, purpose built multi-factor authentication application and the core upstream communitiy project for the <a href="https://authwaffle.app">Auth#Waffle</a> cross-platform MFA application.</p>
-<blockquote>
-<p>All build and release related development is maintained in <a href="https://github.com/AuthWaffle/authwaffle">Auth#waffle</a> repositories.</p>
-</blockquote>
-<h2>Features</h2>
-<ul>
-<li>Implements <a href="https://datatracker.ietf.org/doc/html/rfc4226">HOTP</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6238">TOTP</a> protocols for multi-factor authentication with <a href="https://github.com/hectorm/otpauth">OTPAuth</a>.</li>
-<li>Secure storage via native device interfaces. (<a href="">Read more about security.</a>)</li>
-<li>Simple search and token management.</li>
-</ul>
-<h2>Contributing</h2>
-<p>Please read the <a href="">Code of Conduct</a> and <a href="">Contributors Guide</a> before submitting a pull request.</p>
-<h2>Quick Start</h2>
-<ol>
-<li><p>Fork the repository.</p>
-</li>
-<li><p>Clone your fork:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">git clone git clone https://github.com/your-username/project-name.git</code></pre></div></li>
-<li><p>Install dependencies:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">pnpm install</code></pre></div></li>
-<li><p>Run the project:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">pnpm start</code></pre></div></li>
-</ol>
-<h3>Development Notes</h3>
-<p>Open Authenticator uses <a href="https://capacitorjs.com/docs/apis/preferences?_gl=1*fqyk7c*_gcl_au*MTMzMTQ4NDQwMC4xNzI1NjgwMzAx*_ga*NTMxMTcxMDk3LjE3MjU2ODAzMDE.*_ga_REH9TJF6KF*MTcyODg0NzMxNy4yMi4xLjE3Mjg4NDc5NDEuMC4wLjA."><code>@capictor/preferences</code></a> to store user accounts in <a href="https://github.com/google/google-authenticator/wiki/Key-Uri-Format">Google Authenticator Key</a> format. Accounts are searialized and desearialized from local storage as they are added or modified using the <a href="https://hectorm.github.io/otpauth/classes/URI.html">URI</a> class method in the <a href="https://github.com/hectorm/otpauth">OTPAuth</a> package to instantiate HOTP and TOTP objects.</p>
-<p><strong>Credits</strong></p>
-<ul>
-<li><a href="https://github.com/nimiq/qr-scanner">qr-scanner</a>, <a href="https://nimiq.github.io/qr-scanner/demo/">Demo</a></li>
-</ul>
-<h4>Google Authenticator URI Regex Pattern</h4>
-<p>This regex pattern ensures that all the components of the TOTP URI are present and valid according to the expected format. You can adjust the pattern if there are any specific variations you need to account for. <a href="https://regex101.com/r/2lViJA/1">RegExp Editor</a></p>
-<p><strong>Explanation:</strong></p>
-<ul>
-<li><code>^otpauth:\/\/totp\/</code>: Ensures the URI starts with <code>otpauth://totp/</code>.</li>
-<li><code>([A-Za-z0-9%]+)</code>: Matches the label part of the URI which can contain alphanumeric characters and percent-encoded characters.</li>
-<li><code>(\?issuer=[A-Za-z0-9%]+&amp;secret=[A-Z2-7]+=*&amp;algorithm=(SHA1|SHA256|SHA512)&amp;digits=\d{6}&amp;period=\d{2})?$</code>: Matches the query parameters:<ul>
-<li><code>\?issuer=[A-Za-z0-9%]+</code>: Matches the <code>issuer</code> parameter with alphanumeric and percent-encoded characters.</li>
-<li><code>&amp;secret=[A-Z2-7]+=*</code>: Matches the <code>secret</code> parameter which contains base32 encoded string (letters A-Z and digits 2-7).</li>
-<li><code>&amp;algorithm=(SHA1|SHA256|SHA512)</code>: Matches the <code>algorithm</code> parameter which can be SHA1, SHA256, or SHA512.</li>
-<li><code>&amp;digits=\d{6}</code>: Matches the <code>digits</code> parameter which should be 6 digits.</li>
-<li><code>&amp;period=\d{2}</code>: Matches the <code>period</code> parameter which should be 2 digits.</li>
-</ul>
-</li>
-</ul>
+<p>MIT License</p>
+<p>Copyright (c) 2015-present Drifty Co.</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.</p>
 
 
 
@@ -176,7 +147,7 @@
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
-            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'license.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -2,43 +2,48 @@
 
 # Open Authenticator
 
-Open Authenticator provides the core functionality for the [Auth#Waffle](https://authwaffle.app) multi-factor cross-platform authentication application. All upstream functionality should be commited here.
+Open Authenticator is an open source no-frills, purpose built multi-factor authentication application and the core upstream communitiy project for the [Auth#Waffle](https://authwaffle.app) cross-platform MFA application.
 
 > All build and release related development is maintained in [Auth#waffle](https://github.com/AuthWaffle/authwaffle) repositories.
 
-This application implements [HOTP](https://datatracker.ietf.org/doc/html/rfc4226) and [TOTP](https://datatracker.ietf.org/doc/html/rfc6238) RFC protocols for multi-factor authentication with [OTPAuth](https://github.com/hectorm/otpauth).
+## Features
+
+- Implements [HOTP](https://datatracker.ietf.org/doc/html/rfc4226) and [TOTP](https://datatracker.ietf.org/doc/html/rfc6238) protocols for multi-factor authentication with [OTPAuth](https://github.com/hectorm/otpauth).
+- Secure storage via native device interfaces. ([Read more about security.]())
+- Simple search and token management.
 
 ## Contributing
 
-Open Authenticator is an open source community project and the upstream repository for the [Auth#Waffle](https://authwaffle.app) cross-platform application. All core application development is maintained here while build and deployment development is maintained in [Auth#waffle](https://github.com/AuthWaffle/authwaffle) repositories.
+Please read the [Code of Conduct]() and [Contributors Guide]() before submitting a pull request.
 
-### Getttng Started
+## Quick Start
 
-1. Clone the [`OpenWorkingGroup/open-authenticator`](https://github.com/OpenWorkingGroup/open-authenticator.git) repository
-2. Run `npm install` to Install project dependencies
-3. Run `npm run start` to start a local development server
-4. pull request
+1. Fork the repository.
+2. Clone your fork:
+
+   ```sh
+   git clone git clone https://github.com/your-username/project-name.git
+   ```
+
+3. Install dependencies:
+
+   ```sh
+   pnpm install
+   ```
+
+4. Run the project:
+
+   ```sh
+   pnpm start
+   ```
 
 ### Development Notes
 
-Oen Authenticator uses [`@capictor/preferences`](https://capacitorjs.com/docs/apis/preferences?_gl=1*fqyk7c*_gcl_au*MTMzMTQ4NDQwMC4xNzI1NjgwMzAx*_ga*NTMxMTcxMDk3LjE3MjU2ODAzMDE.*_ga_REH9TJF6KF*MTcyODg0NzMxNy4yMi4xLjE3Mjg4NDc5NDEuMC4wLjA.) to store user accounts. Accounts are searialized and desearialized from local storage as they are added or modified using [URI](https://hectorm.github.io/otpauth/classes/URI.html) class methods in the [OTPAuth](https://github.com/hectorm/otpauth) package to instantiate HOTP and TOTP objects.
+Open Authenticator uses [`@capictor/preferences`](https://capacitorjs.com/docs/apis/preferences?_gl=1*fqyk7c*_gcl_au*MTMzMTQ4NDQwMC4xNzI1NjgwMzAx*_ga*NTMxMTcxMDk3LjE3MjU2ODAzMDE.*_ga_REH9TJF6KF*MTcyODg0NzMxNy4yMi4xLjE3Mjg4NDc5NDEuMC4wLjA.) to store user accounts in [Google Authenticator Key](https://github.com/google/google-authenticator/wiki/Key-Uri-Format) format. Accounts are searialized and desearialized from local storage as they are added or modified using the [URI](https://hectorm.github.io/otpauth/classes/URI.html) class method in the [OTPAuth](https://github.com/hectorm/otpauth) package to instantiate HOTP and TOTP objects.
 
-#### Kit
+**Credits**
 
-- [ ] [Angular 18](https://angular.dev) - TypeScript MVC framework
-- [ ] [Ionic 8](https://github.com/ionic-team/ionic-framework/releases/v8.0.0) - Mobile component & design system
-- [ ] [Capacitor 6](https://capacitorjs.com/docs) - Device API
-- [ ] [Karma 6](https://angular.dev/guide/testing) - Testing framework
-
-**Packages**
-
-- [otpauth](https://github.com/hectorm/otpauth) - OTP/TOTP
-- [NgxDropzone](https://www.npmjs.com/package/ngx-dropzone) - Drag-and-drop
 - [qr-scanner](https://github.com/nimiq/qr-scanner), [Demo](https://nimiq.github.io/qr-scanner/demo/)
-
-**Referece**
-
-- [Google Authenticator Key](https://github.com/google/google-authenticator/wiki/Key-Uri-Format)
 
 #### Google Authenticator URI Regex Pattern
 
